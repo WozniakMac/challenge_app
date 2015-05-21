@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140610104952) do
+ActiveRecord::Schema.define(version: 20150521205238) do
 
   create_table "answers", force: true do |t|
     t.integer  "question_id"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 20140610104952) do
 
   add_index "answers", ["question_id"], name: "index_answers_on_question_id"
   add_index "answers", ["user_id"], name: "index_answers_on_user_id"
+
+  create_table "likes", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "answer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "likes", ["answer_id"], name: "index_likes_on_answer_id"
+  add_index "likes", ["user_id"], name: "index_likes_on_user_id"
 
   create_table "questions", force: true do |t|
     t.string   "title"

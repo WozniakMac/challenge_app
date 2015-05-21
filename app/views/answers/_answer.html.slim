@@ -5,4 +5,11 @@
     = l(answer.created_at, format: :long)
     '  by
     = link_to answer.user, user_path(answer.user)
-
+    '  
+    - if(!current_user.nil? and !answer.likes.where(user_id: current_user.id).any?)
+    	= link_to "Like", controller: "answers", action: "like", question_id: answer.question.id, answer_id: answer.id
+    - elsif(!current_user.nil?)
+    	= link_to "Unlike", controller: "answers", action: "unlike", question_id: answer.question.id, answer_id: answer.id
+    - else
+    	= "Likes: "
+    = "[#{answer.likes.count}]"

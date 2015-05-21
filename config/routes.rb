@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users
 
   root to: 'questions#index'
@@ -6,6 +7,9 @@ Rails.application.routes.draw do
   resources :questions do
     resources :answers, only: [:create]
   end
+
+  get 'questions/:question_id/:answer_id/like' => 'answers#like'
+  get 'questions/:question_id/:answer_id/unlike' => 'answers#unlike'
 
   resources :users, only: [:show]
 
