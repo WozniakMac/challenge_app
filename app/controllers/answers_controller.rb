@@ -1,7 +1,6 @@
 class AnswersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_question
-  before_action :set_answer, only: [:like, :unlike]
+  before_action :set_question, only: [:create]
 
   def create
     @answer = Answer.new(answer_params)
@@ -16,23 +15,25 @@ class AnswersController < ApplicationController
   end
 
   def like
-    @like = Like.new
-    @like.user = current_user
-    @like.answer = @answer
+    @answer = Answer.find(params[:answer][:answer_id])
+    @question = Question.find(params[:answer][:question_id])
+    if(!@answer.likes.where(user_id: current_user.id).any?)
+      @like = Like.new
+      @like.user = current_user
+      @like.answer = @answer
 
-    if @like.save
-      redirect_to question_path(@question), notice: 'You like it!! :)'
+      if @like.save
+        redirect_to question_path(@question), notice: 'You like it!! :)'
+      else
+        redirect_to question_path(@question), alert: 'Samething goes wrong :/'
+      end
     else
-      redirect_to question_path(@question), alert: 'Samething goes wrong :/'
+      @likes = @answer.likes.where(user_id: current_user.id)
+      @likes.each do |like|
+        like.destroy
+      end
+      redirect_to question_path(@question), notice: 'You  dont like it!! :('
     end
-  end
-
-  def unlike
-    @likes = @answer.likes.where(user_id: current_user.id)
-    @likes.each do |like|
-      like.destroy
-    end
-    redirect_to question_path(@question), notice: 'You  dont like it!! :('
   end
 
   private
@@ -44,9 +45,5 @@ class AnswersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def answer_params
       params.require(:answer).permit(:contents)
-    end
-
-    def set_answer
-      @answer = Answer.find(params[:answer_id])
     end
 end

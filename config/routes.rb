@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   get 'questions/:question_id/:answer_id/like' => 'answers#like'
   get 'questions/:question_id/:answer_id/unlike' => 'answers#unlike'
-
+  post 'like' => 'answers#like'
   resources :users, only: [:show]
 
   # The priority is based upon order of creation: first created -> highest priority.
