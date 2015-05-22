@@ -16,7 +16,7 @@ class AnswersController < ApplicationController
 
   def like
     @answer = Answer.find(params[:answer][:answer_id])
-    @question = Question.find(params[:answer][:question_id])
+    @question = @answer.question
     if(!@answer.likes.where(user_id: current_user.id).any?)
       @like = Like.new
       @like.user = current_user
@@ -36,6 +36,19 @@ class AnswersController < ApplicationController
     end
   end
 
+  def accept
+    @answer = Answer.find(params[:answer][:answer_id])
+    @question = @answer.question
+    chech_author
+    if @answer.accepted == true
+      @answer.accepted = false
+      @answer.save
+    elsif(!@question.answers.where(accepted: true).any?)
+      @answer.accepted = true
+      @answer.save
+    end
+  end
+
   private
 
     def set_question
@@ -45,5 +58,11 @@ class AnswersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def answer_params
       params.require(:answer).permit(:contents)
+    end
+
+    def chech_author
+      unless current_user == @question.user
+        redirect_to @question, alert: 'You are not an author!'
+      end 
     end
 end

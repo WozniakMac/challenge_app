@@ -8,9 +8,17 @@
     '  
     - if(!current_user.nil?)
         = form_for answer, :url => url_for(:controller => 'answers', :action => 'like'), method: :post do |f|
-            = f.hidden_field :question_id, value: answer.question.id
             = f.hidden_field :answer_id, value: answer.id
             = f.submit !answer.likes.where(user_id: current_user.id).any? ? "Like [#{answer.likes.count}]" : "Unlike [#{answer.likes.count}]"
     - else
-    	= "Likes: "
-        = "[#{answer.likes.count}]"
+    	= form_for answer, :url => url_for(:controller => 'answers', :action => 'like'), method: :post do |f|
+            = f.hidden_field :answer_id, value: answer.id
+            = f.submit "Like [#{answer.likes.count}]" 
+    - unless(answer.question.answers.where(accepted: true).any?)
+        = form_for answer, :url => url_for(:controller => 'answers', :action => 'accept'), method: :post do |f|
+            = f.hidden_field :answer_id, value: answer.id
+            = f.submit "Accept"
+    - if(answer.accepted == true)
+        = form_for answer, :url => url_for(:controller => 'answers', :action => 'accept'), method: :post do |f|
+            = f.hidden_field :answer_id, value: answer.id
+            = f.submit "Unaccept"
