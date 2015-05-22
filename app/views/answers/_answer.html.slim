@@ -21,4 +21,4 @@
     - if(answer.accepted == true)
         = form_for answer, :url => url_for(:controller => 'answers', :action => 'accept'), method: :post do |f|
             = f.hidden_field :answer_id, value: answer.id
-            = f.submit "Unaccept"
+            = f.submit "The Chosen One - Unaccept"

@@ -1,6 +1,9 @@
 class AnswersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_question, only: [:create]
+  before_action :set_accept_params, only: [:accept]
+  before_action :chech_author, only: [:accept]
+
 
   def create
     @answer = Answer.new(answer_params)
@@ -37,15 +40,14 @@ class AnswersController < ApplicationController
   end
 
   def accept
-    @answer = Answer.find(params[:answer][:answer_id])
-    @question = @answer.question
-    chech_author
     if @answer.accepted == true
       @answer.accepted = false
       @answer.save
+      redirect_to @question, notice: 'The Chosen One is not exist anymore'
     elsif(!@question.answers.where(accepted: true).any?)
       @answer.accepted = true
       @answer.save
+      redirect_to @question, notice: 'The Chosen One was chosen!!'
     end
   end
 
@@ -58,6 +60,11 @@ class AnswersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def answer_params
       params.require(:answer).permit(:contents)
+    end
+
+    def set_accept_params
+      @answer = Answer.find(params[:answer][:answer_id])
+      @question = @answer.question
     end
 
     def chech_author
