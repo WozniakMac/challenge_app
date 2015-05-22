@@ -9,11 +9,15 @@ class AnswersController < ApplicationController
     @answer = Answer.new(answer_params)
     @answer.user = current_user
     @answer.question = @question
-
-    if @answer.save
-      redirect_to question_path(@question), notice: "Answer was successfully created."
+    if @answer.question.answers.where(accepted: true).any?
+      redirect_to @question, alert: 'This question is accepted!'
     else
-      redirect_to question_path(@question), alert: "There was an error when adding answer."
+
+      if @answer.save
+        redirect_to question_path(@question), notice: "Answer was successfully created."
+      else
+        redirect_to question_path(@question), alert: "There was an error when adding answer."
+      end
     end
   end
 
@@ -72,4 +76,5 @@ class AnswersController < ApplicationController
         redirect_to @question, alert: 'You are not an author!'
       end 
     end
+
 end
