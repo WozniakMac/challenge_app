@@ -6,7 +6,10 @@ h1 Top List
 	    .large-12.columns
 	      .userinfo
 	      	- @num ||= 1
-	        = "#{@num} #{user.name} #{user.email}, Points: #{user.points_show}"
+	      	-if user == current_user
+	        	b= "#{@num} #{user.name} #{user.email}, Points: #{user.points_show}"
+	        -else
+	        	= "#{@num} #{user.name} #{user.email}, Points: #{user.points_show}"
 	        - @num += 1
 - else
   .row No users
