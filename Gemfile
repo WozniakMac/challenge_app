@@ -6,6 +6,7 @@ gem 'sqlite3'
 gem 'devise'
 gem 'paperclip', '~> 4.1'
 gem 'figaro'
+gem 'activejob_backport'
 
 # frontend
 gem 'slim-rails'

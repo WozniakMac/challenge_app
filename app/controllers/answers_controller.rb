@@ -14,7 +14,7 @@ class AnswersController < ApplicationController
     else
 
       if @answer.save
-        NotificationMailer.new_answer_email(@question.user,@question).deliver
+        NewAnswerJob.set(wait: 20.seconds).perform_later(@question.user,@question)
         redirect_to question_path(@question), notice: "Answer was successfully created."
       else
         redirect_to question_path(@question), alert: "There was an error when adding answer."
@@ -59,7 +59,7 @@ class AnswersController < ApplicationController
       @answer.save
       user = @answer.user
       user.add_points(25)
-      NotificationMailer.answer_accepted_email(user,@question).deliver
+      AnswerAcceptedJob.set(wait: 20.seconds).perform_later(user,@question)
       redirect_to @question, notice: 'The Chosen One was chosen!!'
     end
   end

@@ -25,6 +25,8 @@ GEM
       activesupport (= 4.1.1)
       builder (~> 3.1)
       erubis (~> 2.7.0)
+    activejob_backport (0.0.3)
+      activesupport (>= 4.0.0)
     activemodel (4.1.1)
       activesupport (= 4.1.1)
       builder (~> 3.1)
@@ -200,6 +202,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activejob_backport
   capybara!
   coffee-rails (~> 4.0.0)
   cucumber-rails (~> 1.4.1)
