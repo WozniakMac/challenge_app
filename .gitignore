@@ -21,3 +21,4 @@
 
 # Ignore avatars files
 public/system/users/avatars/*.*
+.env

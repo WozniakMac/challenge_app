@@ -11,6 +11,7 @@ gem 'therubyracer'
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'pg'
+gem 'puma'
 
 # frontend
 gem 'slim-rails'
