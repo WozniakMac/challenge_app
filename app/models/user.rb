@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   has_many :answers
 
   def to_s
-    name.nil? ? email : name
+    name.nil? or name == '' ? email : name
   end
 
   def add_points(num_points)
