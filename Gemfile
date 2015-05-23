@@ -7,6 +7,7 @@ gem 'devise'
 gem 'paperclip', '~> 4.1'
 gem 'figaro'
 gem 'activejob_backport'
+gem 'delayed_job_active_record'
 
 # frontend
 gem 'slim-rails'
