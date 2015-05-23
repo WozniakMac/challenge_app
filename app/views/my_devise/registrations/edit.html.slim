@@ -23,8 +23,14 @@ h2 Edit Profile
     = f.password_field :current_password, autocomplete: "off"
   
   .field
-    label= f.label :name
+    = f.label :name
     = f.text_field :name
+
+  - if !current_user.avatar.url(:thumb).nil?
+    = image_tag @user.avatar.url(:thumb)
+  .field
+    = f.label :avatar
+    = f.file_field :avatar
 
   div
     = f.submit "Update"
