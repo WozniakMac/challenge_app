@@ -10,4 +10,16 @@ class User < ActiveRecord::Base
   def to_s
     email
   end
+
+  def add_points(num_points)
+  	self.points = 0 if self.points.nil?
+  	self.points = self.points + num_points
+  	self.save
+  end
+
+  def remove_points(num_points)
+  	self.points = 0 if self.points.nil?
+  	self.points = self.points - num_points
+  	self.save
+  end
 end

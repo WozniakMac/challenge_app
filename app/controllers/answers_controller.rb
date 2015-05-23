@@ -28,7 +28,8 @@ class AnswersController < ApplicationController
       @like = Like.new
       @like.user = current_user
       @like.answer = @answer
-
+      user = @answer.user
+      user.add_points(5)
       if @like.save
         redirect_to question_path(@question), notice: 'You like it!! :)'
       else
@@ -39,6 +40,8 @@ class AnswersController < ApplicationController
       @likes.each do |like|
         like.destroy
       end
+      user = @answer.user
+      user.remove_points(5)
       redirect_to question_path(@question), notice: 'You  dont like it!! :('
     end
   end
@@ -47,10 +50,14 @@ class AnswersController < ApplicationController
     if @answer.accepted == true
       @answer.accepted = false
       @answer.save
+      user = @answer.user
+      user.add_points(25)
       redirect_to @question, notice: 'The Chosen One is not exist anymore'
     elsif(!@question.answers.where(accepted: true).any?)
       @answer.accepted = true
       @answer.save
+      user = @answer.user
+      user.remove_points(25)
       redirect_to @question, notice: 'The Chosen One was chosen!!'
     end
   end
