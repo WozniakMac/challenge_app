@@ -59,6 +59,7 @@ class AnswersController < ApplicationController
       @answer.save
       user = @answer.user
       user.add_points(25)
+      NotificationMailer.answer_accepted_email(user,@question).deliver
       redirect_to @question, notice: 'The Chosen One was chosen!!'
     end
   end

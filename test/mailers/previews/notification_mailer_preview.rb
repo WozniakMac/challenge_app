@@ -4,4 +4,9 @@ class NotificationMailerPreview < ActionMailer::Preview
 		user = User.first
     NotificationMailer.new_answer_email(user, user.questions.first)
   end
+
+  def answer_accepted_email_preview
+  	user = User.first
+  	NotificationMailer.answer_accepted_email(user, user.questions.first)
+  end
 end
