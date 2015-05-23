@@ -16,6 +16,8 @@ header
     = link_to "Sign out", destroy_user_session_path, method: :delete
     '  |
     = "You have #{current_user.points.nil? ? 0 : current_user.points} points."
+    '  |
+    = "#{current_user.name}"
   - else
     = link_to "Sign in", new_user_session_path
     '  |

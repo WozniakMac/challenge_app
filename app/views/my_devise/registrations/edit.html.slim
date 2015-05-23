@@ -21,6 +21,10 @@ h2 Edit Profile
     .hint
       ' (we need your current password to confirm your changes)
     = f.password_field :current_password, autocomplete: "off"
+  
+  .field
+    label= f.label :name
+    = f.text_field :name
 
   div
     = f.submit "Update"
