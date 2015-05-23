@@ -14,7 +14,7 @@ class AnswersController < ApplicationController
     else
 
       if @answer.save
-        NotificationMailer.new_answer_email(@user,@question).deliver
+        NotificationMailer.new_answer_email(@question.user,@question).deliver
         redirect_to question_path(@question), notice: "Answer was successfully created."
       else
         redirect_to question_path(@question), alert: "There was an error when adding answer."
