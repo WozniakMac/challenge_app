@@ -2,12 +2,15 @@ source 'https://rubygems.org'
 
 # core
 gem 'rails', '4.1.1'
-gem 'sqlite3'
 gem 'devise'
 gem 'paperclip', '~> 4.1'
 gem 'figaro'
 gem 'activejob_backport'
 gem 'delayed_job_active_record'
+gem 'therubyracer'
+gem 'omniauth'
+gem 'omniauth-github'
+gem 'pg'
 
 # frontend
 gem 'slim-rails'
