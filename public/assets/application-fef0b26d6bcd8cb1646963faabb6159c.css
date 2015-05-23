@@ -1,0 +1,148 @@
+/* line 1, /home/maciej/Projekt/challenge/challenge_app/app/assets/stylesheets/answers.css.scss */
+.answer {
+  margin-bottom: 10px;
+}
+/* line 2, /home/maciej/Projekt/challenge/challenge_app/app/assets/stylesheets/answers.css.scss */
+.answer .details {
+  font-size: smaller;
+  color: #999;
+}
+/* line 6, /home/maciej/Projekt/challenge/challenge_app/app/assets/stylesheets/answers.css.scss */
+.answer .details a {
+  color: #999;
+}
+/* line 1, /home/maciej/Projekt/challenge/challenge_app/app/assets/stylesheets/questions.css.scss */
+.question {
+  margin-bottom: 10px;
+}
+/* line 2, /home/maciej/Projekt/challenge/challenge_app/app/assets/stylesheets/questions.css.scss */
+.question .details {
+  font-size: smaller;
+  color: #999;
+}
+/* line 6, /home/maciej/Projekt/challenge/challenge_app/app/assets/stylesheets/questions.css.scss */
+.question .details a {
+  color: #999;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+/* line 18, /home/maciej/Projekt/challenge/challenge_app/app/assets/stylesheets/application.css.scss */
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 26, /home/maciej/Projekt/challenge/challenge_app/app/assets/stylesheets/application.css.scss */
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 32, /home/maciej/Projekt/challenge/challenge_app/app/assets/stylesheets/application.css.scss */
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+/* line 38, /home/maciej/Projekt/challenge/challenge_app/app/assets/stylesheets/application.css.scss */
+a {
+  color: #000;
+}
+/* line 40, /home/maciej/Projekt/challenge/challenge_app/app/assets/stylesheets/application.css.scss */
+a:visited {
+  color: #666;
+}
+/* line 43, /home/maciej/Projekt/challenge/challenge_app/app/assets/stylesheets/application.css.scss */
+a:hover {
+  color: #fff;
+  background-color: #000;
+}
+
+/* line 50, /home/maciej/Projekt/challenge/challenge_app/app/assets/stylesheets/application.css.scss */
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+/* line 55, /home/maciej/Projekt/challenge/challenge_app/app/assets/stylesheets/application.css.scss */
+#notice {
+  color: green;
+}
+
+/* line 60, /home/maciej/Projekt/challenge/challenge_app/app/assets/stylesheets/application.css.scss */
+.field label {
+  display: block;
+}
+/* line 63, /home/maciej/Projekt/challenge/challenge_app/app/assets/stylesheets/application.css.scss */
+.field input {
+  width: 400px;
+}
+/* line 66, /home/maciej/Projekt/challenge/challenge_app/app/assets/stylesheets/application.css.scss */
+.field textarea {
+  width: 400px;
+  height: 100px;
+}
+/* line 70, /home/maciej/Projekt/challenge/challenge_app/app/assets/stylesheets/application.css.scss */
+.field .hint {
+  color: #666;
+  font-size: smaller;
+}
+
+/* line 76, /home/maciej/Projekt/challenge/challenge_app/app/assets/stylesheets/application.css.scss */
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+/* line 82, /home/maciej/Projekt/challenge/challenge_app/app/assets/stylesheets/application.css.scss */
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+/* line 89, /home/maciej/Projekt/challenge/challenge_app/app/assets/stylesheets/application.css.scss */
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #c00;
+  color: #fff;
+}
+/* line 99, /home/maciej/Projekt/challenge/challenge_app/app/assets/stylesheets/application.css.scss */
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+/* line 106, /home/maciej/Projekt/challenge/challenge_app/app/assets/stylesheets/application.css.scss */
+.flash .alert, .flash .error {
+  color: #f00;
+}
+/* line 109, /home/maciej/Projekt/challenge/challenge_app/app/assets/stylesheets/application.css.scss */
+.flash .notice {
+  color: #0c0;
+}
