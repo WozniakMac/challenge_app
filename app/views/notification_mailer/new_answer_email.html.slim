@@ -4,6 +4,7 @@ html
     meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
   body
     h1
-      | Hi #{@user.name}
+      = "Hi #{@user.name} "
     p
-      | You have new answer.
+      | You have new answer. 
+      = link_to 'Link', question_path(@question)
