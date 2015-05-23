@@ -25,4 +25,8 @@ class User < ActiveRecord::Base
   	self.points = self.points - num_points
   	self.save
   end
+
+  def points_show
+    self.points.nil? ? 0 : self.points
+  end
 end

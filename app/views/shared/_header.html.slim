@@ -15,9 +15,9 @@ header
     '  |
     = link_to "Sign out", destroy_user_session_path, method: :delete
     '  |
-    = "You have #{current_user.points.nil? ? 0 : current_user.points} points."
+    = "You have #{current_user.points_show} points."
     '  |
-    = "#{current_user.name}"
+    = link_to "Top list", :controller => "users", :action => "index"
   - else
     = link_to "Sign in", new_user_session_path
     '  |

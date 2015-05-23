@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   post 'like' => 'answers#like'
   post 'accept' => 'answers#accept'
+  get 'top' => 'users#index', as: 'users'
 
   resources :users, only: [:show]
 

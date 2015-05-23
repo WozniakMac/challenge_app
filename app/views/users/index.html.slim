@@ -1,0 +1,12 @@
+h1 Top List
+
+- if @user.present?
+	- @user.each do |user|
+	  .row
+	    .large-12.columns
+	      .userinfo
+	      	- @num ||= 1
+	        = "#{@num} #{user.name} #{user.email}, Points: #{user.points_show}"
+	        - @num += 1
+- else
+  .row No users
