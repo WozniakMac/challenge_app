@@ -17,4 +17,6 @@
 
 # Ignore local config files
 /config/database.yml
+
+# Ignore avatars files
 public/system/users/avatars/*.*

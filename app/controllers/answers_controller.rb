@@ -51,13 +51,13 @@ class AnswersController < ApplicationController
       @answer.accepted = false
       @answer.save
       user = @answer.user
-      user.add_points(25)
+      user.remove_points(25)
       redirect_to @question, notice: 'The Chosen One is not exist anymore'
     elsif(!@question.answers.where(accepted: true).any?)
       @answer.accepted = true
       @answer.save
       user = @answer.user
-      user.remove_points(25)
+      user.add_points(25)
       redirect_to @question, notice: 'The Chosen One was chosen!!'
     end
   end
