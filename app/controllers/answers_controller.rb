@@ -30,8 +30,8 @@ class AnswersController < ApplicationController
       @like.user = current_user
       @like.answer = @answer
       user = @answer.user
-      user.add_points(5)
       if @like.save
+        user.add_points(5)
         redirect_to question_path(@question), notice: 'You like it!! :)'
       else
         redirect_to question_path(@question), alert: 'Samething goes wrong :/'

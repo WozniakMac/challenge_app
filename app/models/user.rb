@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   has_many :questions
   has_many :answers
 
+  before_save :default_values
+
   def to_s
     name.nil? or name == '' ? email : name
   end
@@ -34,16 +36,16 @@ class User < ActiveRecord::Base
   def self.from_omniauth(auth)
       where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
         user.provider = auth.provider
-        p auth.provider
         user.uid = auth.uid
-        p auth.uid
         user.email = auth.info.email
         user.email = "#{auth.info.nickname}@users.noreply.github.com" if auth.info.email == "" or auth.info.email.nil? 
-        p "EMAIL #{auth.info.nickname}@users.noreply.github.com"
-        p auth.info.email
         user.name = auth.info.nickname
         user.password = Devise.friendly_token[0,20]
         user.save
       end
   end
+  private
+    def default_values
+      self.points ||= 100
+    end
 end
