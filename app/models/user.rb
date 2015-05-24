@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
         user.uid = auth.uid
         p auth.uid
         user.email = auth.info.email
-        user.email ||= "#{auth.raw_info.login}@users.noreply.github.com"
+        user.email == "" or user.email.empty? ? user.email = "#{auth.raw_info.login}@users.noreply.github.com"
         p "EMAIL #{auth.raw_info.login}@users.noreply.github.com"
         p auth.info.email
         user.name = auth.info.nickname
