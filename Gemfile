@@ -13,6 +13,7 @@ gem 'omniauth-github'
 gem 'pg'
 gem 'puma'
 gem 'rails_serve_static_assets'
+gem 'rails_12factor'
 
 # frontend
 gem 'slim-rails'
