@@ -255,6 +255,6 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
   #Add your ID and secret here
   #ID first, secret second
-  #config.omniauth :github, "db381dc9990be7e3bc42503d0", "5b0824c2722b65d29965f1a1df"
+  config.omniauth :github, ENV["CLIENT_ID"], ENV["CLIENT_S"]
   config.secret_key = ENV["SECRET_KEY_DEVISE"]
 end
