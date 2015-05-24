@@ -38,10 +38,8 @@ class User < ActiveRecord::Base
         user.uid = auth.uid
         p auth.uid
         user.email = auth.info.email
-        if auth.info.email == "" or auth.info.email.nil? 
-          user.email = "#{auth.raw_info.login}@users.noreply.github.com"
-        end
-        p "EMAIL #{auth.raw_info.login}@users.noreply.github.com"
+        user.email = "#{auth.info.nickname}@users.noreply.github.com" if auth.info.email == "" or auth.info.email.nil? 
+        p "EMAIL #{auth.info.nickname}@users.noreply.github.com"
         p auth.info.email
         user.name = auth.info.nickname
         user.password = Devise.friendly_token[0,20]
