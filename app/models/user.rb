@@ -3,7 +3,6 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable, :omniauthable
   # :recoverable, :rememberable and :trackable
   devise :database_authenticatable, :registerable, :validatable,
-         :recoverable, :rememberable, :trackable,
           :omniauthable, :omniauth_providers => [:github]
 
   has_attached_file :avatar, :styles => { :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
