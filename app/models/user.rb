@@ -39,6 +39,7 @@ class User < ActiveRecord::Base
         p auth.uid
         user.email = auth.info.email
         user.email ||= "#{auth.login}@users.noreply.github.com"
+        p "EMAIL #{auth.login}@users.noreply.github.com"
         p auth.info.email
         user.name = auth.info.nickname
         user.password = Devise.friendly_token[0,20]
