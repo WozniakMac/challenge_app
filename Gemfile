@@ -14,6 +14,7 @@ gem 'pg'
 gem 'puma'
 gem 'rails_serve_static_assets'
 gem 'rails_12factor'
+gem 'redcarpet', '~> 3.0.0'
 
 # frontend
 gem 'slim-rails'
