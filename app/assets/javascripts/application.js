@@ -14,3 +14,11 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+$( document ).ready(function() {
+	$('.likeclick').click(function(){
+	    var $this = $(this);
+	    $this.val(function( index, value ) {
+			  if (value === "Like") {return "Unlike"} else{return "Like"};
+			});         
+	});
+});

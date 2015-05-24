@@ -32,7 +32,10 @@ class AnswersController < ApplicationController
       user = @answer.user
       if @like.save
         user.add_points(5)
-        redirect_to question_path(@question), notice: 'You like it!! :)'
+        respond_to do |format|
+          format.html { redirect_to question_path(@question), notice: 'You like it!! :)' }
+          format.js
+        end
       else
         redirect_to question_path(@question), alert: 'Samething goes wrong :/'
       end
@@ -40,10 +43,14 @@ class AnswersController < ApplicationController
       @likes = @answer.likes.where(user_id: current_user.id)
       @likes.each do |like|
         like.destroy
+        like.save
       end
       user = @answer.user
       user.remove_points(5)
-      redirect_to question_path(@question), notice: 'You  dont like it!! :('
+      respond_to do |format|
+        format.html { redirect_to question_path(@question), notice: 'You  dont like it!! :(' }
+        format.js
+      end
     end
   end
 

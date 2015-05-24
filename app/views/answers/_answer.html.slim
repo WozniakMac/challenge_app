@@ -7,17 +7,20 @@
     = link_to answer.user, user_path(answer.user)
     '  
     - if(!current_user.nil?)
-        = form_for answer, :url => url_for(:controller => 'answers', :action => 'like'), method: :post do |f|
+        = form_for answer, :url => url_for(:controller => 'answers', :action => 'like'), method: :post, remote: true do |f|
             = f.hidden_field :answer_id, value: answer.id
-            = f.submit !answer.likes.where(user_id: current_user.id).any? ? "Like [#{answer.likes.count}]" : "Unlike [#{answer.likes.count}]"
+            = f.submit !answer.likes.where(user_id: current_user.id).any? ? "Like" : "Unlike", class: :likeclick
     - else
     	= form_for answer, :url => url_for(:controller => 'answers', :action => 'like'), method: :post do |f|
             = f.hidden_field :answer_id, value: answer.id
-            = f.submit "Like [#{answer.likes.count}]" 
+            = f.submit "Like" 
     - unless(answer.question.answers.where(accepted: true).any?)
         = form_for answer, :url => url_for(:controller => 'answers', :action => 'accept'), method: :post do |f|
             = f.hidden_field :answer_id, value: answer.id
             = f.submit "Accept"
+    div id = "answer_#{answer.id}"
+        p
+            | #{answer.likes.count} #{"like".pluralize(answer.likes.count)}
     - if(answer.accepted == true)
         = form_for answer, :url => url_for(:controller => 'answers', :action => 'accept'), method: :post do |f|
             = f.hidden_field :answer_id, value: answer.id
