@@ -92,5 +92,5 @@ Rails.application.configure do
   :enable_starttls_auto => true
   }
   config.active_job.queue_adapter = :delayed_job
-  config.serve_static_assets = true
+  #config.serve_static_assets = true
 end
