@@ -18,7 +18,7 @@ $( document ).ready(function() {
 	$('.likeclick').click(function(){
 	    var $this = $(this);
 	    $this.val(function( index, value ) {
-			  if (value === "Like") {return "Unlike"} else{return "Like"};
+			  if (value == "Like") {return "Unlike"} else{return "Like"};
 			});         
 	});
 });
